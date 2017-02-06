@@ -31978,6 +31978,81 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":69}],197:[function(require,module,exports){
 var React = require('react');
+var About = React.createClass({displayName: "About",
+	render:function(){
+		return(
+				React.createElement("div", null, 
+					React.createElement("h1", null, " About Me "), 
+					React.createElement("p", null, 
+						"I know following technologies:",  
+						React.createElement("ul", null, 
+							React.createElement("li", null, "Html"), 
+							React.createElement("li", null, "Css"), 
+							React.createElement("li", null, "Java Script "), 
+							React.createElement("li", null, " JQuery"), 
+							React.createElement("li", null, "AngularJs"), 
+							React.createElement("li", null, "NodeJs"), 
+							React.createElement("li", null, "ReactJs")
+						)
+					)
+				)
+
+			);
+	}
+
+});
+
+module.exports = About;
+},{"react":196}],198:[function(require,module,exports){
+var React = require('react');
+var Header = React.createClass({displayName: "Header",
+	render:function(){
+		return(
+			 React.createElement("nav", {className: "navbar navbar-default"}, 
+			 	React.createElement("div", {className: "container-fluid"}, 
+			 		React.createElement("a", {href: "/", className: "navbar-brand"}, 
+			 			React.createElement("img", {src: "images/a.jpg"})
+			 		), 
+			 		React.createElement("ul", {className: "nav navbar-nav"}, 
+			 			React.createElement("li", null, React.createElement("a", {href: "/"}, "Home")), 
+			 			React.createElement("li", null, React.createElement("a", {href: "/#study"}, "Education")), 
+						React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+			 			
+			 			
+			 		)
+			 	)
+			 )
+			);
+	}
+});
+
+module.exports = Header;
+},{"react":196}],199:[function(require,module,exports){
+var React = require('react');
+var Study = React.createClass({displayName: "Study",
+	render:function(){
+		return(
+				React.createElement("div", null, 
+					React.createElement("h1", null, " This Page includes Education list. "), 
+					React.createElement("p", null, 
+						"These are my educational qualifications.", 
+						React.createElement("ul", null, 
+							React.createElement("li", null, "MS-CS US"), 
+							React.createElement("li", null, "M.tech"), 
+							React.createElement("li", null, "B.tech")
+						)
+					)
+				)
+
+			);
+	}
+
+});
+
+module.exports = Study;
+
+},{"react":196}],200:[function(require,module,exports){
+var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
@@ -31995,37 +32070,45 @@ var Home = React.createClass({displayName: "Home",
 
 
 module.exports = Home;
-},{"react":196,"react-router":27}],198:[function(require,module,exports){
-var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-
-var Profile = React.createClass({displayName: "Profile",
-	render:function(){
-		return(
-			React.createElement("div", {className: "jumbotron"}, 
-				React.createElement("h1", null, " This is Abhilash "), 
-				React.createElement("p", null, " He is UI Developer" + ' ' +
-					"He works for some ---- company"
-				)
-			)
-			
-			
-		)
-	}
-
-});
-
-module.exports = Profile;
-},{"react":196,"react-router":27}],199:[function(require,module,exports){
+},{"react":196,"react-router":27}],201:[function(require,module,exports){
 $ = jQuery = require('jquery');
 
 var React = require('react');
 var Home = require('./components/homePage');
-var Profile = require('./components/profilePage');
+var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
+var Study = require('./components/education/educationPage');
 
-React.render(React.createElement(Home, null), document.getElementById('app'));
-React.render(React.createElement(Profile, null), document.getElementById('app1'));
+var App = React.createClass({displayName: "App",
+	  render:function(){
+	  	var Child;
 
-},{"./components/homePage":197,"./components/profilePage":198,"jquery":2,"react":196}]},{},[199]);
+	  	switch(this.props.route){
+	  		case 'about': Child= About ; break;
+	  		case 'study': Child= Study ; break;
+	  		default: Child =Home;
+
+	  	}
+
+	  	return(
+	  		React.createElement("div", null, 
+	  			React.createElement(Header, null), 
+	  			React.createElement(Child, null)
+	  		)
+	  		)
+	  }
+
+});
+
+function render(){
+	var route =  window.location.hash.substr(1);
+	React.render(React.createElement(App, {route: route}),document.getElementById('app'))
+
+}
+
+window.addEventListener('hashchange',render);
+
+render()
+
+},{"./components/about/aboutPage":197,"./components/common/header":198,"./components/education/educationPage":199,"./components/homePage":200,"jquery":2,"react":196}]},{},[201]);
