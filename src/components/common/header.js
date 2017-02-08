@@ -5,13 +5,14 @@ var Header = React.createClass({
 			 <nav className="navbar navbar-default">
 			 	<div className="container-fluid">
 			 		<a href="/" className="navbar-brand">
-			 			<img src="images/a.jpg"/>
+			 			<img src="images/react.png"/>
 			 		</a>
 			 		<ul className="nav navbar-nav">
-			 			<li><a href="/">Home</a></li>
+
+			 		   <li><a href="/">Home</a></li>
 			 			<li><a href="/#study">Education</a></li>
+			 			<li><a href="/#authors">Author</a></li>
 						<li><a href="/#about">About</a></li>
-			 			
 			 			
 			 		</ul>
 			 	</div>
@@ -21,3 +22,4 @@ var Header = React.createClass({
 });
 
 module.exports = Header;
+
