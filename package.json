@@ -1,6 +1,7 @@
 {
   "name": "psadmin",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
@@ -24,6 +25,5 @@
     "reactify": "^1.1.1",
     "toastr": "^2.1.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "description": ""
+  }
 }

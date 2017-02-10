@@ -6,8 +6,9 @@ var Home = React.createClass({
 	render:function(){
 		return (
 			<div className="jumbotron">
-				<h1>We am learning React Js</h1>
+				<h1>I am learning React Js</h1>
 				<p>You guys are awesome </p>
+				<Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
 			</div>
 		)
 	}
