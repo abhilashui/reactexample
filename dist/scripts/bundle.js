@@ -48790,6 +48790,21 @@ module.exports = {
 },{}],200:[function(require,module,exports){
 var React = require('react');
 var About = React.createClass({displayName: "About",
+	statics:{
+		willTransitionTo:function(transition, params,query,callback){
+			if(!confirm('are you sure you want read')){
+				transition.abort();
+			}else{
+				callback();
+			}
+		},
+		willTransitionFrom: function(transition,component){
+			if(!confirm('are you want to leave')){
+				transition.abort();
+			}
+
+		}
+	},
 	render:function(){
 		return(
 				React.createElement("div", null, 
@@ -48900,7 +48915,7 @@ var Header = React.createClass({displayName: "Header",
 			 React.createElement("nav", {className: "navbar navbar-default"}, 
 			 	React.createElement("div", {className: "container-fluid"}, 
 			 		React.createElement(Link, {to: "app", className: "navbar-brand"}, 
-			 			React.createElement("img", {src: "images/abhi.png"})
+			 			React.createElement("img", {src: "images/react.png"})
 			 		), 
 			 		React.createElement("ul", {className: "nav navbar-nav"}, 
 
@@ -49016,7 +49031,7 @@ var React = require('react');
 var Router = require('react-router');
 var routes = require('./routes')
 
-Router.run(routes, function(Handler){
+Router.run(routes,Router.HistoryLocation, function(Handler){
 	React.render(React.createElement(Handler, null), document.getElementById('app'))
 })
 
